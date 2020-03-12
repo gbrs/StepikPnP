@@ -1,5 +1,33 @@
-x = int(input())
-print("True" if (-15 < x <= 12 or 14 < x < 17 or 19 <= x) else "False")
+'''
+aaaabbcaa
+a4b2c1a2
 
-# на стациоанрном компе у меня папка в папке образуется. Почему???
-# изменю на Гитхабе и запуллю
+abc
+a1b1c1
+'''
+
+# ввод и ответ
+sequence = input()
+modsequence = ''
+
+# инициализируем рабочие переменные
+quantity = 1
+base = sequence[0]
+i = 1
+
+# основной рабочий цикл
+while i < len(sequence):
+    if sequence[i] == base:
+        quantity += 1
+    else:
+        modsequence = modsequence + base + str(quantity)
+        base = sequence[i]
+        quantity = 1
+    i += 1
+
+# как криво! Пришлось сделать хвостик к циклу для случая,
+# когда в конце идут подряд несколько оснований
+if i > 1:
+    modsequence = modsequence + base + str(quantity)
+
+print(modsequence)
