@@ -1,31 +1,4 @@
-'''
-aaaabbcaa
-a4b2c1a2
-
-abc
-a1b1c1
-'''
-
-# ввод и ответ
-sequence = input()
-modsequence = ''
-
-# инициализируем рабочие переменные
-quantity = 1
-base = sequence[0]
-i = 1
-
-# основной рабочий цикл
-while i < len(sequence):
-    if sequence[i] == base:
-        quantity += 1
-    else:
-        modsequence = modsequence + base + str(quantity)
-        base = sequence[i]
-        quantity = 1
-    i += 1
-
-# хвостик к циклу для вывода последнего значения
-modsequence = modsequence + base + str(quantity)
-
-print(modsequence)
+students = ['Ivan', 'Masha', 'Sasha']
+students += ['Olga']
+students += 'Olga not'
+print(students)
