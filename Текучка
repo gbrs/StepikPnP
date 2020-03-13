@@ -25,9 +25,7 @@ while i < len(sequence):
         quantity = 1
     i += 1
 
-# как криво! Пришлось сделать хвостик к циклу для случая,
-# когда в конце идут подряд несколько оснований
-if i > 1:
-    modsequence = modsequence + base + str(quantity)
+# хвостик к циклу для вывода последнего значения
+modsequence = modsequence + base + str(quantity)
 
 print(modsequence)
