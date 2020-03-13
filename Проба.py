@@ -1,5 +1,3 @@
-a = 'вася'
-b = a
-a = a + ' - лучший'
-print(b)
-print(a)
+s = map(int, input().split())
+print(sum(s))
+len(len(s))
