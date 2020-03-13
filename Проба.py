@@ -1,3 +1,2 @@
-s = map(int, input().split())
-print(sum(s))
-len(len(s))
+L = [[1, 2, 3] * 5]
+print(L[0][2])
