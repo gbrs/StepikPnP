@@ -1,11 +1,15 @@
-s = [int(i) for i in input().split()]  # ввод
-ss = s.copy()
-ss.sort()
+s = 0
+ss = 0
+a = int(input())
+s += a
 
-while len(ss) > 0:
-    min_temp = min(ss)
-    ss.remove(min_temp)
-    if len(ss) > 0 and min(ss) == min_temp:
-        print(min_temp, end=' ')
-        for i in range(ss.count(min_temp)):
-            ss.remove(min_temp)
+while s != 0:
+
+    ss += a ** 2
+
+    a = int(input())
+    s += a
+
+ss += a ** 2
+
+print(ss)
