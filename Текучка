@@ -1,15 +1,15 @@
-s = 0
-ss = 0
-a = int(input())
-s += a
+n = int(input())
+t = n
+i = 1
 
-while s != 0:
+while t > 0:
+    if i < t:
+        for j in range(i):
+            print(i, ' ', end='')
+        t -= i
+    else:
+        for j in range(t):
+            print(i, ' ', end='')
+        t = 0
+    i += 1
 
-    ss += a ** 2
-
-    a = int(input())
-    s += a
-
-ss += a ** 2
-
-print(ss)
