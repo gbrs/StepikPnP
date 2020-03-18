@@ -1,15 +1,11 @@
-n = int(input())
-t = n
-i = 1
+lst = list(map(int, input().split()))
+x = int(input())
+tobe = False
 
-while t > 0:
-    if i < t:
-        for j in range(i):
-            print(i, ' ', end='')
-        t -= i
-    else:
-        for j in range(t):
-            print(i, ' ', end='')
-        t = 0
-    i += 1
+for i in range(len(lst)):
+    if lst[i] == x:
+        print(i, end=' ')
+        tobe = True
 
+if not tobe:
+    print("Отсутствует")
