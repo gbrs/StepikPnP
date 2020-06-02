@@ -1,11 +1,23 @@
-s = [int(i) for i in input().split()]  # ввод
-ss = s.copy()
-ss.sort()
+arr = []
 
-while len(ss) > 0:
-    min_temp = min(ss)
-    ss.remove(min_temp)
-    if len(ss) > 0 and min(ss) == min_temp:
-        print(min_temp, end=' ')
-        for i in range(ss.count(min_temp)):
-            ss.remove(min_temp)
+while True:
+    input_ = input('Введите элементы очередной строки '
+                   'через пробел или end ').split()
+    # print(input_, type(input_))
+    if input_ == ['end']:
+        break
+    else:
+        new_line = list(map(int, input_))
+        arr.append(new_line)
+
+# arr = [[1, 2, 3], [4, 5, 6]]
+arr_result = [[0] * len(arr[0]) for j in range(len(arr))]
+# print(arr_result)
+
+for i in range(len(arr)):
+    for j in range(len(arr[0])):
+        arr_result[i][j] = (arr[i-1][j] + arr[(i+1) % len(arr)][j] +
+                            arr[i][j-1] + arr[i][(j+1) % len(arr[0])])
+
+for i in range(len(arr)):
+    print(*arr_result[i])
