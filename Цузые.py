@@ -1,2 +1,4 @@
-i = int(input())
-print((i.count(g) + i.count(c)) / len(i) * 100)
+a = input().split()
+print(type(a), a)
+b = [i for i in input().split()]
+print(type(b), b)
