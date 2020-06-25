@@ -1,12 +1,15 @@
+value = 1
+count = 2
+d = list((value))
+print(d)
+
+'''
+В темплейты lgg
 import logging
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger()
-logger.disabled = True
+logger.disabled = False
+logging.debug(f'')
 
-x = 0
-y = 1000
-for i in range(10):
-    x += i
-    y -= i
-    logging.debug(f'{x} и {y}')
-print(x, y)
+'''
+

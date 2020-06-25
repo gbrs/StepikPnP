@@ -1,12 +1,27 @@
-def modify_list(l):
-    for number in l[:]:
-        if number % 2 == 1:
-            l.pop(number)
-        number //= 2
+"""Напишите функцию update_dictionary(d, key, value), которая принимает на вход словарь dd и два числа: keykey и valuevalue.
+
+Если ключ keykey есть в словаре dd, то добавьте значение valuevalue в список, который хранится по этому ключу.
+Если ключа keykey нет в словаре, то нужно добавить значение в список по ключу 2 * key2∗key. Если и ключа 2 * key2∗key
+нет, то нужно добавить ключ 2 * key2∗key в словарь и сопоставить ему список из переданного элемента [value][value].
+
+Требуется реализовать только эту функцию, кода вне неё не должно быть.
+Функция не должна вызывать внутри себя функции input и print."""
+
+def update_dictionary(d, key, value):
+    if key in d:
+        d[key].append(value)
+    elif 2*key in d:
+        d[2*key].append(value)
+    else:
+        d[2*key] = list(value)
 
 
-lst = [1, 2, 3, 4, 5, 6]
-print(modify_list(lst))  # None
-print(lst)               # [1, 2, 3]
-modify_list(lst)
-print(lst)               # [1]
+x = {}
+print(update_dictionary(x, 0, -5))  # None
+print(x)  # {0: [-5]}  (0*0=2)
+update_dictionary(x, 1, -1)
+print(x)  # {0: [-5], 2: [-1]} (тк индекса 1 нет создаем key*2=2)
+update_dictionary(x, 2, -2)
+print(x)  # {0: [-5], 2: [-1, -2]} (тк индекс 2 есть добавляем -2 в него)
+update_dictionary(x, 3, -3)
+print(x)  # 0: [-5], 2: [-1, -2], 6: [-3]}
