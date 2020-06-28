@@ -18,11 +18,11 @@ logging.debug(f'')
 В темплейты tmt100
 import timeit
 
-MySetup = '''
-$NOT_REPITED_BLOCK$
+NOT_REPITED_CODE = '''
+$NOT_REPITED_CODE$
 '''
 
-MyCode = ''' 
+TESTED_CODE = ''' 
 $TESTED_CODE$
 '''
 
