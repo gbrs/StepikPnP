@@ -1,33 +1,30 @@
 """
-Помогите Антону написать упрощённую версию такой программы, которая сможет подсчитать слова, разделённые пробелом
-и вывести получившуюся статистику. Программа должна считывать одну строку со стандартного ввода и выводить
-для каждого уникального слова в этой строке число его повторений (без учёта регистра) в формате "слово количество"
-(см. пример вывода). Порядок вывода слов может быть произвольным, каждое уникальное слово﻿ должно выводиться
-только один раз.
+Напишите программу, которая считывает строку с числом nn, которое задаёт количество чисел, которые нужно считать.
+Далее считывает n строк с числами xi, по одному числу в каждой строке. Итого будет n+1 строк.
 
-Sample Input 1:
-a aa abC aa ac abc bcd a
+При считывании числа xi программа должна на отдельной строке вывести значение f(xi).
+Функция f(x) уже реализована и доступна для вызова.
 
-Sample Output 1:
-ac 1
-a 2
-abc 2
-bcd 1
-aa 2
-
-Sample Input 2:
-a A a
-Sample Output 2:
-a 3
+Функция вычисляется достаточно долго и зависит только от переданного аргумента x.
+Для того, чтобы уложиться в ограничение по времени, нужно избежать повторного вычисления значений.
 
 """
 
+def f(x):
+    return x*x
 
-war_and_world = input().lower().split()
-dictionary_statistic = {}
 
-for word in war_and_world:
-    dictionary_statistic[word] = dictionary_statistic.setdefault(word, 0) + 1
+dictionary_values = {}
+quantity = int(input())
 
-for key, value in dictionary_statistic.items():
-    print(key, value)
+for i in range(quantity):
+    input_current = int(input())
+
+    if input_current not in dictionary_values:
+        value_current = f(input_current)
+        dictionary_values[input_current] = value_current
+    else:
+        value_current = dictionary_values[input_current]
+
+    print(value_current)
+    # print(dictionary_values)

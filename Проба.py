@@ -1,8 +1,7 @@
-value = 1
-count = 2
-d = list('a')
-print(d)
-
+genome = 'ATTG'
+print(*[i for i in genome], sep='\n')
+[print(c) for c in genome]
+print([c for c in genome])
 
 '''
 В темплейты lgg
@@ -11,6 +10,7 @@ logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger()
 logger.disabled = False
 logging.debug(f'')
+дом
 
 '''
 
@@ -29,5 +29,13 @@ $TESTED_CODE$
 # вывод на печать результатов измерений number = 100 повторов
 print(timeit.repeat(stmt=MyCode, setup=MySetup, number=100))
 
+дом
+
 """
 
+"""
+ii => int(input())
+
+дом
+
+"""
