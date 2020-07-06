@@ -1,30 +1,39 @@
 """
-Напишите программу, которая считывает строку с числом nn, которое задаёт количество чисел, которые нужно считать.
-Далее считывает n строк с числами xi, по одному числу в каждой строке. Итого будет n+1 строк.
+На прошлой неделе мы сжимали строки, используя кодирование повторов.
+Теперь нашей задачей будет восстановление исходной строки обратно.
+Напишите программу, которая считывает из файла строку, соответствующую тексту,
+сжатому с помощью кодирования повторов, и производит обратную операцию,
+получая исходный текст.
+Запишите полученный текст в файл и прикрепите его, как ответ на это задание.
+В исходном тексте не встречаются цифры, так что код однозначно интерпретируем.
+Примечание. Это первое задание типа Dataset Quiz. В таких заданиях после нажатия
+"Start Quiz" у вас появляется ссылка "download your dataset".
+Используйте эту ссылку для того, чтобы загрузить файл со входными данными к себе
+на компьютер. Запустите вашу программу, используя этот файл в качестве входных данных.
+Выходной файл, который при этом у вас получится, надо отправить в качестве ответа
+на эту задачу.
 
-При считывании числа xi программа должна на отдельной строке вывести значение f(xi).
-Функция f(x) уже реализована и доступна для вызова.
-
-Функция вычисляется достаточно долго и зависит только от переданного аргумента x.
-Для того, чтобы уложиться в ограничение по времени, нужно избежать повторного вычисления значений.
+Sample Input:  a3b4c2e10b1
+Sample Output: aaabbbbcceeeeeeeeeeb
 
 """
 
-def f(x):
-    return x*x
+with open("dataset_3363_2.txt") as f:
+    encoded_message = f.readline()
+chart = ''
+number = 0
+decoded_message = []
 
-
-dictionary_values = {}
-quantity = int(input())
-
-for i in range(quantity):
-    input_current = int(input())
-
-    if input_current not in dictionary_values:
-        value_current = f(input_current)
-        dictionary_values[input_current] = value_current
+for symbol in encoded_message:
+    if symbol not in '0123456789':
+        for i in range(number):
+            decoded_message.append(chart)
+        number = 0
+        chart = symbol
     else:
-        value_current = dictionary_values[input_current]
-
-    print(value_current)
-    # print(dictionary_values)
+        number = number * 10 + int(symbol)
+for i in range(number):
+    decoded_message.append(chart)
+print(''.join(decoded_message))
+with open("output.txt", 'w') as f:
+    f.write(''.join(decoded_message))
