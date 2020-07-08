@@ -1,8 +1,7 @@
-genome = 'ATTG'
-print(*[i for i in genome], sep='\n')
-[print(c) for c in genome]
-print([c for c in genome])
-
+with open('file.txt') as f:
+    print(f.read())
+    f.seek(5)
+    print(f.readlines())
 '''
 В темплейты lgg
 import logging

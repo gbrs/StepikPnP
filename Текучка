@@ -24,6 +24,9 @@ chart = ''
 number = 0
 decoded_message = []
 
+# если встретили букву, то запоминаем ее, добавляем предыдущую букву number раз
+# в список decoded_message и обнуляем число повторений
+# если встречаем цифру, то формируем из цифр число пока не встретим букву
 for symbol in encoded_message:
     if symbol not in '0123456789':
         for i in range(number):
@@ -32,8 +35,13 @@ for symbol in encoded_message:
         chart = symbol
     else:
         number = number * 10 + int(symbol)
+
+# приходится последнюю букву отдельно добавлять. Как от  такого избавляться?
 for i in range(number):
     decoded_message.append(chart)
-print(''.join(decoded_message))
+
+# print(''.join(decoded_message))
+
+# записываем ответ в файл, преобразовывая список в строку
 with open("output.txt", 'w') as f:
     f.write(''.join(decoded_message))
