@@ -1,33 +1,68 @@
 """
-Имеется набор файлов, каждый из которых, кроме последнего,
-содержит имя следующего файла.
-Первое слово в тексте последнего файла: "We".
+Напишите программу, которая принимает на стандартный вход
+список игр футбольных команд с результатом матча и
+выводит на стандартный вывод сводную таблицу результатов всех матчей.
 
-Скачайте предложенный файл. В нём содержится ссылка на первый файл из этого набора.
+За победу команде начисляется 3 очка, за поражение — 0, за ничью — 1.
 
-Все файлы располагаются в каталоге по адресу:
-https://stepic.org/media/attachments/course67/3.6.3/
+Формат ввода следующий:
+В первой строке указано целое число n — количество завершенных игр.
+После этого идет n строк, в которых записаны результаты игры в следующем формате:
+Первая_команда;Забито_первой_командой;Вторая_команда;Забито_второй_командой
 
-Загрузите содержимое ﻿последнего файла из набора, как ответ на это задание.
+Вывод программы необходимо оформить следующим образом:
+Команда:Всего_игр Побед Ничьих Поражений Всего_очков
+
+Конкретный пример ввода-вывода приведён ниже.
+
+Порядок вывода команд произвольный.
+
+Sample Input:
+3
+Спартак;9;Зенит;10
+Локомотив;12;Зенит;3
+Спартак;8;Локомотив;15
+
+Sample Output:
+Спартак:2 0 0 2 0
+Зенит:2 1 0 1 3
+Локомотив:2 2 0 0 6
 """
 
-import requests
+n = int(input())
+match_results = []
+teams = set()
+for i in range(n):
+    match_results.append(input().split(';'))
+    teams.add(match_results[i][0])
+    teams.add(match_results[i][2])
+championship_table = {team: [0, 0, 0, 0, 0] for team in teams}
 
+# match_results = [['Спартак', '9', 'Зенит', '10'],
+#                  ['Локомотив', '12', 'Зенит', '3'],
+#                  ['Спартак', '8', 'Локомотив', '15']]
+# teams = {'Зенит', 'Спартак', 'Локомотив'}
+# championship_table = {team: [0, 0, 0, 0, 0] for team in teams}
+# print(championship_table)
 
-def get_file(file_url):
-    """Печатает файл, начинающийся с 'We', или рекурентно вызывает себя"""
-    # print('file_url: ', file_url)
-    file = requests.get(file_url)
-    if file.text[:2] == 'We':
-        print(file.text)
+for match in match_results:
+    championship_table[match[0]][0] += 1
+    championship_table[match[2]][0] += 1
+    if int(match[1]) == int(match[3]):
+        championship_table[match[0]][2] += 1
+        championship_table[match[0]][4] += 1
+        championship_table[match[2]][2] += 1
+        championship_table[match[2]][4] += 1
+    elif int(match[1]) < int(match[3]):
+        championship_table[match[0]][3] += 1
+        championship_table[match[2]][1] += 1
+        championship_table[match[2]][4] += 3
     else:
-        # next_file_name = file.text.strip()
-        # print('next_file_url:', next_file_url)
-        get_file('https://stepic.org/media/attachments/course67/3.6.3/' +
-                 file.text.strip())
-    pass
+        championship_table[match[0]][1] += 1
+        championship_table[match[0]][4] += 3
+        championship_table[match[2]][3] += 1
+# print(championship_table)
 
-with open('dataset_3378_3.txt') as f:
-    init_file_url = f.read().strip()
-    # print('init_file_name: ', init_file_url)
-    get_file(init_file_url)
+for team, result in championship_table.items():
+    print(team, ':', sep='', end='')
+    print(*result)
