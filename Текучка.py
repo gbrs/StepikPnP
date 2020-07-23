@@ -35,7 +35,6 @@ Sample Output:
 '''
 
 total_values = dict(zip(range(1, 12), [[0, 0] for _ in range(11)]))
-# print(total_values)
 
 with open('dataset_3380_5.txt', encoding='utf-8') as f:
     for pupil in f.readlines():
